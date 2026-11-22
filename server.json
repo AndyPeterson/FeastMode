@@ -1,0 +1,11 @@
+{
+    "name":"feastmode",
+    "app":{
+        "cfengine":"adobe@2025"
+    },
+    "web":{
+        "http":{
+            "port":7777
+        }
+    }
+}
