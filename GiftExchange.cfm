@@ -299,10 +299,65 @@
             text-align: center;
             font-size: 0.95rem;
             color: var(--text-muted);
+            margin-bottom: 24px;
         }
 
         .status-pill strong {
             color: var(--christmas-gold);
+        }
+
+        /* Registry List Card */
+        .registry-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .registry-title {
+            color: var(--christmas-gold);
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--christmas-green);
+            padding-bottom: 10px;
+        }
+
+        .signup-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signup-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(244, 208, 63, 0.15);
+            font-size: 0.95rem;
+        }
+
+        .signup-list li:last-child {
+            border-bottom: none;
+        }
+
+        .signup-list li:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .signup-num {
+            color: var(--christmas-gold);
+            font-weight: 700;
+            min-width: 26px;
+        }
+
+        .empty-row {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 18px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -363,6 +418,26 @@
     <!-- Participant Count Summary -->
     <div class="status-pill">
         &#127876; Currently signed up: <cfoutput><strong>#signupCount#</strong></cfoutput> <cfif signupCount EQ 1>participant<cfelse>participants</cfif>
+    </div>
+
+    <!-- Signed-Up Email List -->
+    <div class="registry-card">
+        <h2 class="registry-title">&#127873; Signed-Up Participants</h2>
+        <cfif signupCount EQ 0>
+            <div class="empty-row">No participants signed up yet. Be the first to join!</div>
+        <cfelse>
+            <ul class="signup-list">
+                <cfloop from="1" to="#signupCount#" index="i">
+                    <cfset entry = registry.signups[i]>
+                    <cfoutput>
+                        <li>
+                            <span class="signup-num">#i#.</span>
+                            <span>#encodeForHTML( entry.email )#</span>
+                        </li>
+                    </cfoutput>
+                </cfloop>
+            </ul>
+        </cfif>
     </div>
 
 </div>
