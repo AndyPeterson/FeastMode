@@ -333,7 +333,7 @@
     <!-- Event Summary & Rules Box -->
     <div class="guidelines-box">
         <h3>&#10052; How It Works</h3>
-        <p>The White Elephant Gift Exchange follows the same rules as last year. We will open gifts in the order of 2026 trivia scores, lowest to highest. The next person whose turn it is to open a gift will have to decide whether they want to open a gift from the gift table, or switch with somebody. Switching is allowed only one time per gift and the person who is &ldquo;switched on&rdquo; cannot &ldquo;re-switch.&rdquo; $15 to $20 bucks for the gift. We will do this sometime around 3:00 PM on Wednesday afternoon, after the FEAST.</p>
+        <p>The White Elephant Gift Exchange follows the same rules as last year. We will open gifts in the order of 2026 trivia scores, lowest to highest. The next person whose turn it is to open a gift will have to decide whether they want to open a gift from under the tree, or switch with somebody. Switching is allowed only one time per gift, and the person who is &ldquo;switched on&rdquo; cannot &ldquo;re-switch.&rdquo; $15 to $20 bucks for the gift. We will do this sometime around 3:00 PM on Wednesday afternoon, after the FEAST.</p>
     </div>
 
     <!-- Sign-Up Form -->
