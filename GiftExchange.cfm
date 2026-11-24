@@ -57,7 +57,7 @@
 
                     if ( alreadyRegistered ) {
                         feedbackType = "error";
-                        feedbackMessage = userEmail & " is already signed up for the Sneaky White Elephant Gift Exchange!";
+                        feedbackMessage = userEmail & " is already signed up for the Sneaky Santa Gift Exchange!";
                     } else {
                         newSignup = {
                             "id": createUUID(),
@@ -69,7 +69,7 @@
                         fileWrite( dataFile, serializeJSON( dataStore ), "utf-8" );
 
                         feedbackType = "success";
-                        feedbackMessage = "You're in! " & userEmail & " has been signed up for the Sneaky White Elephant Gift Exchange.";
+                        feedbackMessage = "You're in! " & userEmail & " has been signed up for the Sneaky Santa Gift Exchange.";
                         submittedEmail = "";
                     }
                 }
@@ -103,7 +103,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sneaky White Elephant Gift Exchange Sign-Up - FEAST MODE</title>
+    <title>Sneaky Santa Gift Exchange Sign-Up - FEAST MODE</title>
     <style>
         :root {
             --christmas-red: #c41e3a;
@@ -367,10 +367,10 @@
 
     <!-- Top Header -->
     <div class="header-card">
-        <h1>&#127873; Sneaky White Elephant Gift Exchange &#128024;</h1>
+        <h1>&#127873; Sneaky Santa Gift Exchange &#127877;</h1>
         <p class="event-meta">FEAST MODE Holiday Celebration &bull; Wednesday @ ~3:00 PM (After the Feast)</p>
         <p style="color: var(--text-muted); font-size: 0.92rem;">
-            Enter your email address below to join the Sneaky White Elephant Gift Exchange!
+            Enter your email address below to join the Sneaky Santa Gift Exchange!
         </p>
         <div class="nav-links">
             <a href="index.cfm" class="nav-back">&larr; Back to Feast Welcome</a>
@@ -388,7 +388,7 @@
     <!-- Event Summary & Rules Box -->
     <div class="guidelines-box">
         <h3>&#10052; How It Works</h3>
-        <p>The White Elephant Gift Exchange follows the same rules as last year. We will open gifts in the order of 2026 trivia scores, lowest to highest. The next person whose turn it is to open a gift will have to decide whether they want to open a gift from under the tree, or switch with somebody. Switching is allowed only one time per gift, and the person who is &ldquo;switched on&rdquo; cannot &ldquo;re-switch.&rdquo; $15 to $20 bucks for the gift. We will do this sometime around 3:00 PM on Wednesday afternoon, after the FEAST.</p>
+        <p>The Sneaky Santa Gift Exchange basically follows the same rules as last year. Each person who signs up buys a nice gift between $15 - $20. We will open gifts in the order of 2026 trivia scores, lowest to highest. The next person whose turn it is to open a gift will have to decide whether they want to open a gift from under the tree, or switch with somebody who has already opened a gift. That person then goes to the tree to grab a new gift. Switching is allowed only one time per gift, and the person who is &ldquo;switched on&rdquo; cannot &ldquo;re-switch.&rdquo; We will do this sometime around 3:00 PM on Wednesday afternoon, after the FEAST.</p>
     </div>
 
     <!-- Sign-Up Form -->
