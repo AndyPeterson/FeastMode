@@ -167,45 +167,89 @@
             subject="Thank You for Signing Up! - 5th Annual JVAMCF Feast Mode"
             type="html"
             charset="utf-8"
-        >
-            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background-color: ##14281c; color: ##fefefe; border: 2px solid ##f4d03f; border-radius: 12px; padding: 28px;">
-                <div style="background: ##c41e3a; border: 1px solid ##f4d03f; border-radius: 8px; padding: 14px 18px; text-align: center; margin-bottom: 22px;">
-                    <h2 style="margin: 0; color: ##ffffff; font-size: 20px;">&##127876; 5th Annual JVAMCF &mdash; FEAST MODE! &##127876;</h2>
-                </div>
+        ><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEAST MODE Sign-Up Confirmation</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: ##f3f4f6; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; color: ##1f2937;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="##f3f4f6" style="background-color: ##f3f4f6; width: 100%; margin: 0; padding: 24px 12px;">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="##ffffff" style="max-width: 600px; width: 100%; background-color: ##ffffff; border: 1px solid ##d1d5db;">
+                    <!--- Festive Crimson & Gold Banner --->
+                    <tr>
+                        <td bgcolor="##991b1b" style="background-color: ##991b1b; border-bottom: 4px solid ##d97706; padding: 22px 28px; text-align: center; font-family: 'Segoe UI', Tahoma, Arial, sans-serif;">
+                            <div style="font-size: 12px; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; color: ##fde68a; margin-bottom: 6px;">
+                                FEAST MODE 2026 &bull; SIGN-UP CONFIRMED
+                            </div>
+                            <h2 style="margin: 0; color: ##ffffff; font-size: 22px; font-weight: bold; line-height: 1.3;">
+                                &##127876; 5th Annual JVAMCF Feast! &##127876;
+                            </h2>
+                        </td>
+                    </tr>
 
-                <p style="font-size: 16px; line-height: 1.6; color: ##fefefe;">
-                    Hi <strong>#encodeForHTML( userName )#</strong>,
-                </p>
+                    <!--- Main White Card Content --->
+                    <tr>
+                        <td bgcolor="##ffffff" style="background-color: ##ffffff; padding: 28px 32px; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; color: ##1f2937;">
+                            <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: ##1f2937;">
+                                Hi <strong style="color: ##111827;">#encodeForHTML( userName )#</strong>,
+                            </p>
 
-                <p style="font-size: 15px; line-height: 1.6; color: ##fefefe;">
-                    Thank you so much for signing up! With your help and holiday spirit, this is shaping up to be the <strong>best JVAMCF feast to date</strong> as we honor Jesse Vancil's memory and celebrate Ken Rausch's retirement!
-                </p>
+                            <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 1.6; color: ##374151;">
+                                Thank you so much for signing up! With your help and holiday spirit, this is shaping up to be the <strong style="color: ##991b1b;">best JVAMCF feast to date</strong> as we honor Jesse Vancil's memory and celebrate Ken Rausch's retirement!
+                            </p>
 
-                <p style="font-size: 15px; line-height: 1.6; color: ##d0ded6;">
-                    <strong>When &amp; Where:</strong> Wednesday, December 2nd @ 12:00 PM (Noon) &bull; IT Commons (Outside of Josh's Office)
-                    <cfif len( userDishName ) OR len( userDishCategory )>
-                        <br><strong>Your Dish / Contribution:</strong> #encodeForHTML( len( userDishName ) ? userDishName : userDishCategory )#
-                    </cfif>
-                    <cfif len( userVolunteerRole )>
-                        <br><strong>Volunteer Role:</strong> #encodeForHTML( userVolunteerRole )#
-                    </cfif>
-                </p>
+                            <!--- Event Details Callout --->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="##f0fdf4" style="background-color: ##f0fdf4; border: 1px solid ##bbf7d0; border-left: 4px solid ##15803d; margin: 0 0 20px 0; width: 100%;">
+                                <tr>
+                                    <td style="padding: 14px 18px; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: ##1f2937;">
+                                        <strong style="color: ##14532d;">When &amp; Where:</strong> Wednesday, December 2nd @ 12:00 PM (Noon) &bull; IT Commons (Outside of Josh's Office)
+                                        <cfif len( userDishName ) OR len( userDishCategory )>
+                                            <br><strong style="color: ##14532d;">Your Dish / Contribution:</strong> #encodeForHTML( len( userDishName ) ? userDishName : userDishCategory )#
+                                        </cfif>
+                                        <cfif len( userVolunteerRole )>
+                                            <br><strong style="color: ##14532d;">Volunteer Role:</strong> #encodeForHTML( userVolunteerRole )#
+                                        </cfif>
+                                    </td>
+                                </tr>
+                            </table>
 
-                <div style="background-color: ##1e3a28; border: 1px dashed ##f4d03f; border-radius: 8px; padding: 16px 18px; margin: 20px 0;">
-                    <p style="margin: 0 0 8px 0; color: ##f4d03f; font-weight: bold; font-size: 16px;">
-                        &##128181; Sending In Your $5 Donation
-                    </p>
-                    <p style="margin: 0; font-size: 15px; line-height: 1.6; color: ##fefefe;">
-                        Your $5 donation funds the warm soups, deli platters, salads, and holiday tableware. Please send via <strong>Venmo to @gro1996</strong> or give cash directly to <strong>Gracelyn, GTPC Treasurer</strong>.
-                    </p>
-                </div>
+                            <!--- $5 Donation Instructions Callout --->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="##fffbeb" style="background-color: ##fffbeb; border: 1px solid ##fcd34d; border-left: 4px solid ##991b1b; margin: 0 0 22px 0; width: 100%;">
+                                <tr>
+                                    <td style="padding: 16px 18px; font-family: 'Segoe UI', Tahoma, Arial, sans-serif;">
+                                        <p style="margin: 0 0 6px 0; color: ##991b1b; font-weight: bold; font-size: 15px;">
+                                            &##128181; Sending In Your $5 Donation
+                                        </p>
+                                        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: ##1f2937;">
+                                            Your $5 donation funds the warm soups, deli platters, salads, and holiday tableware. Please send via <strong style="color: ##111827;">Venmo to @gro1996</strong> or give cash directly to <strong style="color: ##111827;">Gracelyn, GTPC Treasurer</strong>.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
 
-                <p style="font-size: 15px; line-height: 1.6; color: ##d0ded6; margin-bottom: 0;">
-                    We can't wait to celebrate with you!<br>
-                    <strong style="color: ##f4d03f;">&mdash; The GoodTimes Planning Committee</strong>
-                </p>
-            </div>
-        </cfmail>
+                            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: ##374151;">
+                                We can't wait to celebrate with you!<br>
+                                <strong style="color: ##14532d;">&mdash; The GoodTimes Planning Committee</strong>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!--- Forest Green Footer Strip --->
+                    <tr>
+                        <td bgcolor="##14532d" style="background-color: ##14532d; padding: 12px 20px; text-align: center; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 12px; color: ##e5e7eb;">
+                            5th Annual Jesse Vancil Memorial Christmas Feast &amp; Ken Rausch Retirement Celebration
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html></cfmail>
         <cfcatch type="any">
             <cflog file="feastmode_mail" type="error" text="Failed to send signup confirmation email to #userEmail#: #cfcatch.message# - #cfcatch.detail#">
         </cfcatch>
