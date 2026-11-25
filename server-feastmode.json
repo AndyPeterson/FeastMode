@@ -1,11 +1,14 @@
 {
-    "name":"feastmode",
-    "app":{
-        "cfengine":"adobe@2025"
+    "name": "feastmode",
+    "app": {
+        "cfengine": "adobe@2025"
     },
-    "web":{
-        "http":{
-            "port":7777
+    "web": {
+        "http": {
+            "port": 7777
         }
+    },
+    "cfconfig": {
+        "file": ".cfconfig.json"
     }
 }

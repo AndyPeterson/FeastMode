@@ -571,6 +571,193 @@
             height: auto;
             display: block;
         }
+
+        /* AI Feast Chef Assistant Panel */
+        .ai-chef-box {
+            background: linear-gradient(145deg, rgba(14, 38, 24, 0.95), rgba(10, 24, 16, 0.95));
+            border: 1.5px solid var(--christmas-gold);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 22px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), inset 0 0 18px rgba(244, 208, 63, 0.06);
+        }
+
+        .ai-chef-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .ai-chef-title {
+            color: var(--christmas-gold);
+            font-size: 1.02rem;
+            font-weight: 700;
+        }
+
+        .ai-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fef08a;
+            background: rgba(196, 30, 58, 0.35);
+            border: 1px solid rgba(244, 208, 63, 0.5);
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.4px;
+        }
+
+        .ai-chef-desc {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.45;
+        }
+
+        .ai-controls-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .ai-controls-row input[type="text"] {
+            flex: 1 1 240px;
+        }
+
+        .btn-ai-suggest {
+            background: linear-gradient(135deg, #f4d03f, #d4ac0d);
+            color: #0b2916;
+            border: 1px solid #fef08a;
+            padding: 10px 18px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+            box-shadow: 0 3px 10px rgba(244, 208, 63, 0.25);
+        }
+
+        .btn-ai-suggest:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(244, 208, 63, 0.45);
+        }
+
+        .btn-ai-suggest:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        .ai-results-area {
+            margin-top: 16px;
+            display: none;
+        }
+
+        .ai-results-area.visible {
+            display: block;
+        }
+
+        .ai-spread-summary {
+            background: rgba(244, 208, 63, 0.1);
+            border-left: 3px solid var(--christmas-gold);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            color: #fef9c3;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .ai-suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .ai-suggestion-card {
+            background: rgba(8, 20, 13, 0.9);
+            border: 1px solid rgba(244, 208, 63, 0.35);
+            border-radius: 8px;
+            padding: 14px;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ai-suggestion-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--christmas-gold);
+            background: rgba(18, 42, 27, 0.95);
+        }
+
+        .ai-card-tags {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .ai-cat-pill {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(20, 90, 50, 0.7);
+            color: var(--christmas-gold);
+            border: 1px solid rgba(244, 208, 63, 0.3);
+        }
+
+        .ai-dish-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .ai-dish-reason {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin-bottom: 8px;
+        }
+
+        .ai-dish-diet {
+            font-size: 0.78rem;
+            color: #bbf7d0;
+            margin-bottom: 10px;
+        }
+
+        .ai-pick-cta {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--christmas-gold);
+            text-align: right;
+        }
+
+        .ai-error-msg {
+            background: rgba(255, 77, 77, 0.16);
+            border: 1px solid var(--error-red);
+            color: #fecaca;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.86rem;
+            line-height: 1.45;
+        }
+
+        @keyframes goldPulse {
+            0% { box-shadow: 0 0 0 0 rgba(244, 208, 63, 0.85); border-color: var(--christmas-gold); }
+            100% { box-shadow: 0 0 0 10px rgba(244, 208, 63, 0); }
+        }
+
+        .ai-filled-flash {
+            animation: goldPulse 0.9s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -630,6 +817,30 @@
             </cfoutput>
 
             <h2 class="form-section-title">&#127873; Step 2: What are you bringing? (Optional)</h2>
+
+            <!-- AI Feast Chef Spread Analyzer & Dish Suggester -->
+            <div class="ai-chef-box">
+                <div class="ai-chef-header">
+                    <span class="ai-chef-title">&#10024; Stumped on what to bring? Ask the AI Feast Chef!</span>
+                    <span class="ai-badge">Google Gemini &bull; CF2025 AI</span>
+                </div>
+                <p class="ai-chef-desc">
+                    Analyzes what coworkers have already signed up to bring, spots gaps in our buffet spread, and gives you 1-click dish ideas.
+                </p>
+                <div class="ai-controls-row">
+                    <input
+                        type="text"
+                        id="aiPreference"
+                        placeholder="Optional hint: e.g., store-bought, vegetarian, easy finger food, slow cooker..."
+                        maxlength="180"
+                    >
+                    <button type="button" id="btnAiSuggest" class="btn-ai-suggest">
+                        &#10024; Suggest Dishes
+                    </button>
+                </div>
+                <div id="aiResultsArea" class="ai-results-area" aria-live="polite"></div>
+            </div>
+
             <div class="form-group">
                 <label for="dishCategory">Dish Category</label>
                 <select id="dishCategory" name="dishCategory">
@@ -769,6 +980,177 @@
     </div>
 
 </div>
+
+<script>
+(function () {
+    const btnSuggest = document.getElementById('btnAiSuggest');
+    const prefInput = document.getElementById('aiPreference');
+    const resultsArea = document.getElementById('aiResultsArea');
+    const categorySelect = document.getElementById('dishCategory');
+    const dishInput = document.getElementById('dishName');
+    const dietInput = document.getElementById('dietaryRestrictions');
+    const warmerCheckbox = document.getElementById('needsWarmer');
+
+    if (!btnSuggest || !resultsArea) return;
+
+    function flashField(el) {
+        if (!el) return;
+        el.classList.remove('ai-filled-flash');
+        void el.offsetWidth; // trigger reflow
+        el.classList.add('ai-filled-flash');
+    }
+
+    function applySuggestion(item) {
+        if (categorySelect && item.category) {
+            categorySelect.value = item.category;
+            flashField(categorySelect);
+        }
+        if (dishInput && item.dishName) {
+            dishInput.value = item.dishName;
+            flashField(dishInput);
+        }
+        if (dietInput && typeof item.dietaryNotes === 'string') {
+            dietInput.value = item.dietaryNotes;
+            flashField(dietInput);
+        }
+        if (warmerCheckbox) {
+            warmerCheckbox.checked = Boolean(item.needsWarmer);
+        }
+        if (dishInput) {
+            dishInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            dishInput.focus();
+        }
+    }
+
+    async function fetchSuggestions() {
+        btnSuggest.disabled = true;
+        btnSuggest.textContent = '\u2728 Asking the Feast Chef...';
+        resultsArea.classList.add('visible');
+        resultsArea.innerHTML = '<div class="ai-spread-summary">\uD83C\uDF84 Checking our current potluck spread with Google Gemini...</div>';
+
+        try {
+            const formBody = new URLSearchParams();
+            formBody.set('preference', prefInput ? prefInput.value.trim() : '');
+
+            const resp = await fetch('ai-suggest.cfm', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+                body: formBody.toString()
+            });
+
+            const data = await resp.json();
+            resultsArea.innerHTML = '';
+
+            if (!data.success) {
+                const errBox = document.createElement('div');
+                errBox.className = 'ai-error-msg';
+                errBox.textContent = data.message || 'Unable to fetch AI dish suggestions right now.';
+                resultsArea.appendChild(errBox);
+                return;
+            }
+
+            if (data.spreadSummary) {
+                const summaryDiv = document.createElement('div');
+                summaryDiv.className = 'ai-spread-summary';
+                summaryDiv.textContent = '\uD83D\uDCCB Spread Analysis: ' + data.spreadSummary;
+                resultsArea.appendChild(summaryDiv);
+            }
+
+            const grid = document.createElement('div');
+            grid.className = 'ai-suggestions-grid';
+
+            (data.suggestions || []).forEach(function (item) {
+                const card = document.createElement('div');
+                card.className = 'ai-suggestion-card';
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+
+                const topWrap = document.createElement('div');
+
+                const tags = document.createElement('div');
+                tags.className = 'ai-card-tags';
+
+                const catPill = document.createElement('span');
+                catPill.className = 'ai-cat-pill';
+                catPill.textContent = item.category || 'Contribution';
+                tags.appendChild(catPill);
+
+                if (item.needsWarmer) {
+                    const warmPill = document.createElement('span');
+                    warmPill.className = 'tag-warmer';
+                    warmPill.style.marginLeft = '0';
+                    warmPill.textContent = '\u26A1 Outlet';
+                    tags.appendChild(warmPill);
+                }
+                topWrap.appendChild(tags);
+
+                const title = document.createElement('div');
+                title.className = 'ai-dish-title';
+                title.textContent = item.dishName || 'Suggested Dish';
+                topWrap.appendChild(title);
+
+                if (item.reason) {
+                    const reason = document.createElement('div');
+                    reason.className = 'ai-dish-reason';
+                    reason.textContent = item.reason;
+                    topWrap.appendChild(reason);
+                }
+
+                card.appendChild(topWrap);
+
+                const bottomWrap = document.createElement('div');
+                if (item.dietaryNotes) {
+                    const diet = document.createElement('div');
+                    diet.className = 'ai-dish-diet';
+                    diet.textContent = '\uD83C\uDFF7\uFE0F ' + item.dietaryNotes;
+                    bottomWrap.appendChild(diet);
+                }
+
+                const cta = document.createElement('div');
+                cta.className = 'ai-pick-cta';
+                cta.textContent = 'Use This Dish \u2192';
+                bottomWrap.appendChild(cta);
+
+                card.appendChild(bottomWrap);
+
+                card.addEventListener('click', function () {
+                    applySuggestion(item);
+                });
+                card.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        applySuggestion(item);
+                    }
+                });
+
+                grid.appendChild(card);
+            });
+
+            resultsArea.appendChild(grid);
+        } catch (err) {
+            resultsArea.innerHTML = '';
+            const errBox = document.createElement('div');
+            errBox.className = 'ai-error-msg';
+            errBox.textContent = 'Could not reach ai-suggest.cfm: ' + (err.message || err);
+            resultsArea.appendChild(errBox);
+        } finally {
+            btnSuggest.disabled = false;
+            btnSuggest.textContent = '\u2728 Suggest More Ideas';
+        }
+    }
+
+    btnSuggest.addEventListener('click', fetchSuggestions);
+
+    if (prefInput) {
+        prefInput.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Enter') {
+                ev.preventDefault();
+                fetchSuggestions();
+            }
+        });
+    }
+})();
+</script>
 
 </body>
 </html>
