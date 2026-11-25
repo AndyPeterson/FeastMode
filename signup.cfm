@@ -21,9 +21,12 @@
         fileWrite( dataFile, serializeJSON( initialStructure ), "utf-8" );
     }
 
-    // Feedback message variables
+    // Feedback message & email trigger variables
     feedbackMessage = "";
     feedbackType = ""; // "success" or "error"
+    shouldSendConfirmationEmail = false;
+    submittedName = "";
+    submittedEmail = "";
 
     // -------------------------------------------------------------
     // 2. FORM SUBMISSION PROCESSING
@@ -31,6 +34,9 @@
     if ( cgi.request_method == "POST" ) {
 
         userName = trim( form.userName ?: "" );
+        userEmail = trim( form.userEmail ?: "" );
+        submittedName = userName;
+        submittedEmail = userEmail;
         hasAgreedToDonation = structKeyExists( form, "agreeDonation" );
         userDishName = trim( form.dishName ?: "" );
         userDishCategory = trim( form.dishCategory ?: "" );
@@ -43,6 +49,9 @@
         if ( len( userName ) == 0 ) {
             feedbackType = "error";
             feedbackMessage = "Your Name is required. Please enter your name to register.";
+        } else if ( len( userEmail ) == 0 || !isValid( "email", userEmail ) ) {
+            feedbackType = "error";
+            feedbackMessage = "A valid Email Address is required. Please enter your email to register.";
         } else if ( !hasAgreedToDonation ) {
             feedbackType = "error";
             feedbackMessage = "Please agree to the $5 donation to the GoodTimes Planning Committee to complete your sign-up.";
@@ -66,6 +75,7 @@
                         "id": submissionId,
                         "submittedAt": submissionTimestamp,
                         "name": userName,
+                        "email": userEmail,
                         "dietaryRestrictions": len( userDietary ) ? userDietary : "None",
                         "hasDish": ( len( userDishName ) > 0 || len( userDishCategory ) > 0 ),
                         "dishName": userDishName,
@@ -119,11 +129,14 @@
 
                     // ONLY declare success if the file write operation succeeded
                     feedbackType = "success";
-                    feedbackMessage = "Thank you, " & encodeForHTML( userName ) & "! Your sign-up has been successfully recorded.";
+                    feedbackMessage = "Thank you, " & userName & "! Your sign-up has been successfully recorded and a confirmation email is on its way.";
+                    shouldSendConfirmationEmail = true;
+                    submittedName = "";
+                    submittedEmail = "";
                 }
             } catch ( any e ) {
                 feedbackType = "error";
-                feedbackMessage = "An error occurred while saving your sign-up: " & encodeForHTML( e.message );
+                feedbackMessage = "An error occurred while saving your sign-up: " & e.message;
             }
         }
     }
@@ -144,6 +157,60 @@
     if ( !structKeyExists( registry, "volunteers" ) ) registry.volunteers = [];
     if ( !structKeyExists( registry, "attendees" ) ) registry.attendees = [];
 </cfscript>
+
+<!--- 4. SEND CONFIRMATION EMAIL ON SUCCESSFUL SIGN-UP --->
+<cfif shouldSendConfirmationEmail>
+    <cftry>
+        <cfmail
+            to="#userEmail#"
+            from="andy.peterson@illinoiscomptroller.gov"
+            subject="Thank You for Signing Up! - 5th Annual JVAMCF Feast Mode"
+            type="html"
+            charset="utf-8"
+        >
+            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background-color: ##14281c; color: ##fefefe; border: 2px solid ##f4d03f; border-radius: 12px; padding: 28px;">
+                <div style="background: ##c41e3a; border: 1px solid ##f4d03f; border-radius: 8px; padding: 14px 18px; text-align: center; margin-bottom: 22px;">
+                    <h2 style="margin: 0; color: ##ffffff; font-size: 20px;">&##127876; 5th Annual JVAMCF &mdash; FEAST MODE! &##127876;</h2>
+                </div>
+
+                <p style="font-size: 16px; line-height: 1.6; color: ##fefefe;">
+                    Hi <strong>#encodeForHTML( userName )#</strong>,
+                </p>
+
+                <p style="font-size: 15px; line-height: 1.6; color: ##fefefe;">
+                    Thank you so much for signing up! With your help and holiday spirit, this is shaping up to be the <strong>best JVAMCF feast to date</strong> as we honor Jesse Vancil's memory and celebrate Ken Rausch's retirement!
+                </p>
+
+                <p style="font-size: 15px; line-height: 1.6; color: ##d0ded6;">
+                    <strong>When &amp; Where:</strong> Wednesday, December 2nd @ 12:00 PM (Noon) &bull; IT Commons (Outside of Josh's Office)
+                    <cfif len( userDishName ) OR len( userDishCategory )>
+                        <br><strong>Your Dish / Contribution:</strong> #encodeForHTML( len( userDishName ) ? userDishName : userDishCategory )#
+                    </cfif>
+                    <cfif len( userVolunteerRole )>
+                        <br><strong>Volunteer Role:</strong> #encodeForHTML( userVolunteerRole )#
+                    </cfif>
+                </p>
+
+                <div style="background-color: ##1e3a28; border: 1px dashed ##f4d03f; border-radius: 8px; padding: 16px 18px; margin: 20px 0;">
+                    <p style="margin: 0 0 8px 0; color: ##f4d03f; font-weight: bold; font-size: 16px;">
+                        &##128181; Sending In Your $5 Donation
+                    </p>
+                    <p style="margin: 0; font-size: 15px; line-height: 1.6; color: ##fefefe;">
+                        Your $5 donation funds the warm soups, deli platters, salads, and holiday tableware. Please send via <strong>Venmo to @gro1996</strong> or give cash directly to <strong>Gracelyn, GTPC Treasurer</strong>.
+                    </p>
+                </div>
+
+                <p style="font-size: 15px; line-height: 1.6; color: ##d0ded6; margin-bottom: 0;">
+                    We can't wait to celebrate with you!<br>
+                    <strong style="color: ##f4d03f;">&mdash; The GoodTimes Planning Committee</strong>
+                </p>
+            </div>
+        </cfmail>
+        <cfcatch type="any">
+            <cflog file="feastmode_mail" type="error" text="Failed to send signup confirmation email to #userEmail#: #cfcatch.message# - #cfcatch.detail#">
+        </cfcatch>
+    </cftry>
+</cfif>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -294,7 +361,7 @@
             color: var(--christmas-gold);
         }
 
-        input[type="text"], select, textarea {
+        input[type="text"], input[type="email"], select, textarea {
             width: 100%;
             padding: 10px 12px;
             border-radius: 6px;
@@ -305,7 +372,7 @@
             font-family: inherit;
         }
 
-        input[type="text"]:focus, select:focus, textarea:focus {
+        input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--christmas-gold);
             box-shadow: 0 0 8px rgba(244, 208, 63, 0.4);
@@ -506,10 +573,17 @@
         <form method="POST" action="signup.cfm">
 
             <h2 class="form-section-title">&#128100; Step 1: Your Information</h2>
-            <div class="form-group">
-                <label for="userName">Your Full Name <span class="required-star">* (Required)</span></label>
-                <input type="text" id="userName" name="userName" required placeholder="e.g., Alex Miller" maxlength="100">
-            </div>
+            <cfoutput>
+                <div class="form-group">
+                    <label for="userName">Your Full Name <span class="required-star">* (Required)</span></label>
+                    <input type="text" id="userName" name="userName" value="#encodeForHTMLAttribute( submittedName )#" required placeholder="e.g., Alex Miller" maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">Your Email Address <span class="required-star">* (Required)</span></label>
+                    <input type="email" id="userEmail" name="userEmail" value="#encodeForHTMLAttribute( submittedEmail )#" required placeholder="e.g., alex.miller@illinoiscomptroller.gov" maxlength="150">
+                </div>
+            </cfoutput>
 
             <h2 class="form-section-title">&#127873; Step 2: What are you bringing? (Optional)</h2>
             <div class="form-group">
