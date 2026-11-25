@@ -1,0 +1,14 @@
+{
+    "mailServers": [
+        {
+            "smtp": "SMTP.IllinoisComptroller.gov",
+            "port": 25,
+            "tls": true,
+            "ssl": false
+        }
+    ],
+    "mailMaintainConnections": true,
+    "mailConnectionTimeout": 60,
+    "mailSpoolEnable": true,
+    "mailSpoolInterval": 15
+}

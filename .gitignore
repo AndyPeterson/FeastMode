@@ -7,3 +7,7 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
+
+# Signup data files and backups
+signups*.json*
+WhiteElephant*.json*
