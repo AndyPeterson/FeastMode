@@ -133,7 +133,7 @@
             border-radius: 8px;
             padding: 12px 18px;
             margin: 18px auto 26px auto;
-            max-width: 650px;
+            max-width: 840px;
             color: var(--christmas-gold);
             font-weight: 600;
             font-size: 1rem;
@@ -247,7 +247,9 @@
 
         <!-- Date & Location -->
         <div class="event-info">
-            &#128197; Wednesday, December 2nd @ 12:00 PM (Noon) &bull; &#128205; IT Commons outside of Josh's Office
+            <span style="white-space: nowrap;">&#128197; Wednesday, December 2nd @ 12:00 PM (Noon)</span> &bull;
+            <span style="white-space: nowrap;">&#128205; IT Commons outside of Josh's Office</span> &bull;
+            <span style="white-space: nowrap;">&#128181;&nbsp;Only $5!</span>
         </div>
 
         <!-- Featured Video Player -->

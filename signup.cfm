@@ -545,7 +545,7 @@
                             I agree to donate $5 to the GoodTimes Planning Committee <span class="required-star">* (Required)</span>
                         </span>
                         <span class="checkbox-subtext">
-                            Donations fund the warm soups, deli platters, salads, and holiday tableware.
+                            Donations fund the warm soups, deli platters, salads, and holiday tableware. Venmo $ to @gro1996 or give to Gracelyn, GTPC Treasurer.
                         </span>
                     </div>
                 </label>
