@@ -816,7 +816,7 @@
                 </div>
             </cfoutput>
 
-            <h2 class="form-section-title">&#127873; Step 2: What are you bringing? (Optional)</h2>
+            <h2 class="form-section-title">&#127873; Step 2: What are you bringing?</h2>
 
             <!-- AI Feast Chef Spread Analyzer & Dish Suggester -->
             <div class="ai-chef-box">
